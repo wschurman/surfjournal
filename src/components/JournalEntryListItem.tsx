@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, StyleSheet, Pressable } from 'react-native';
 
-import { JournalEntry } from '../data/JournalEntry';
+import { JournalEntry } from '../data/journalEntriesReducer';
 
 type Props = {
   journalEntry: JournalEntry;
@@ -10,24 +10,25 @@ type Props = {
 
 export default (props: Props) => {
   return (
-    <Pressable onPress={() => props.onPress(props.journalEntry)} style={styles.item}>
+    <Pressable
+      onPress={() => props.onPress(props.journalEntry)}
+      style={({ pressed }) => [{ backgroundColor: pressed ? '#eee' : '#fff' }, styles.item]}>
       <Text style={styles.title}>{props.journalEntry.title}</Text>
-      <Text style={styles.body}>{props.journalEntry.body}</Text>
+      <Text style={styles.date}>{new Date(props.journalEntry.createdAt).toLocaleString()}</Text>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: '#f9c2ff',
     padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
   },
   title: {
-    fontSize: 32,
+    fontSize: 16,
   },
-  body: {
-    fontSize: 28,
+  date: {
+    marginTop: 8,
+    color: '#666',
+    fontSize: 14,
   },
 });

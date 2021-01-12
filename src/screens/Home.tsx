@@ -1,12 +1,16 @@
+import { Ionicons } from '@expo/vector-icons';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useLayoutEffect } from 'react';
-import { Button, View } from 'react-native';
+import { Pressable } from 'react-native';
+import { TouchableNativeFeedback, TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 
-import { MainStackParamList, RootStackParamList, RootState, journalEntriesSelectors } from '../App';
 import JournalEntryList from '../components/JournalEntryList';
-import { JournalEntry } from '../data/JournalEntry';
+import { journalEntriesSelectors, JournalEntry } from '../data/journalEntriesReducer';
+import { RootState } from '../data/store';
+import { MainStackParamList } from './MainStack';
+import { RootStackParamList } from './RootStack';
 
 type HomeScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<MainStackParamList, 'Home'>,
@@ -30,15 +34,17 @@ const Home = ({
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Button onPress={() => navigation.navigate('NewJournalEntryModal')} title="Add" />
+        <TouchableOpacity
+          onPress={() => navigation.navigate('NewJournalEntryModal')}
+          style={{ marginRight: 10 }}>
+          <Ionicons name="add" color="blue" size={30} />
+        </TouchableOpacity>
       ),
     });
   }, [navigation]);
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <JournalEntryList journalEntries={journalEntries} onPressJournalEntry={onPressJournalEntry} />
-    </View>
+    <JournalEntryList journalEntries={journalEntries} onPressJournalEntry={onPressJournalEntry} />
   );
 };
 

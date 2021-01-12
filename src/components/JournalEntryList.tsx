@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FlatList, SafeAreaView } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 
-import { JournalEntry } from '../data/JournalEntry';
+import { JournalEntry } from '../data/journalEntriesReducer';
 import JournalEntryListItem from './JournalEntryListItem';
 
 type Props = {
@@ -9,18 +9,19 @@ type Props = {
   onPressJournalEntry: (journalEntry: JournalEntry) => void;
 };
 
+const Separator = () => <View style={{ height: StyleSheet.hairlineWidth }} />;
+
 export default (props: Props) => {
   const renderItem = ({ item }: { item: JournalEntry }) => (
     <JournalEntryListItem journalEntry={item} onPress={props.onPressJournalEntry} />
   );
 
   return (
-    <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <FlatList
-        data={props.journalEntries}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
-    </SafeAreaView>
+    <FlatList
+      data={props.journalEntries}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+      ItemSeparatorComponent={Separator}
+    />
   );
 };
