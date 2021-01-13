@@ -2,23 +2,31 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "lang": "en",
-  "name": "surfjournal",
-  "short_name": "surfjournal",
+  "name": "SurfJournal",
+  "short_name": "SurfJournal",
   "start_url": "/?utm_source=web_app_manifest",
   "orientation": "portrait",
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "http://play.google.com/store/apps/details?id=com.wschurman.surfjournal",
+      "id": "com.wschurman.surfjournal"
+    }
+  ],
+  "prefer_related_applications": true,
   "icons": [
     {
-      "src": "/pwa/chrome-icon/chrome-icon-144.png",
+      "src": "/surfjournal/pwa/chrome-icon/chrome-icon-144.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "/pwa/chrome-icon/chrome-icon-192.png",
+      "src": "/surfjournal/pwa/chrome-icon/chrome-icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/pwa/chrome-icon/chrome-icon-512.png",
+      "src": "/surfjournal/pwa/chrome-icon/chrome-icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
