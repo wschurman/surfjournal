@@ -1,5 +1,6 @@
 {
   "main": "src/App.tsx",
+  "homepage": "/surfjournal",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
