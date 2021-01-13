@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
+import makeHeaderLeftOptions from '../helpers/makeHeaderLeftOptions';
 import JournalEntryDetailsScreen from './JournalEntryDetailsScreen';
 import JournalEntryListScreen from './JournalEntryListScreen';
 
@@ -16,7 +17,9 @@ export default () => (
     <MainStack.Screen
       name="JournalEntryListScreen"
       component={JournalEntryListScreen}
-      options={{ title: 'Surf Journal' }}
+      options={makeHeaderLeftOptions({
+        title: 'Surf Journal',
+      })}
     />
     <MainStack.Screen name="JournalEntryDetailsScreen" component={JournalEntryDetailsScreen} />
   </MainStack.Navigator>

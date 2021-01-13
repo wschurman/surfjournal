@@ -2,7 +2,6 @@ import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { Keyboard, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import ForecastSearchResult from '../components/ForecastSearchResult';
 
@@ -11,7 +10,7 @@ export default () => {
   const [resultSearchText, setResultSearchText] = useState('');
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.searchBar}>
         <TextInput
           value={searchText}
@@ -34,15 +33,15 @@ export default () => {
         </TouchableOpacity>
       </View>
       <ForecastSearchResult searchText={resultSearchText} />
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: '#fff',
+    padding: 10,
   },
   searchBar: {
     flexDirection: 'row',

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import { JournalEntry } from '../data/journalEntriesReducer';
 import JournalEntryListItem from './JournalEntryListItem';
@@ -10,6 +10,12 @@ type Props = {
 };
 
 const Separator = () => <View style={{ height: StyleSheet.hairlineWidth }} />;
+
+const Empty = () => (
+  <View style={{ flex: 1, alignContent: 'center', alignItems: 'center' }}>
+    <Text style={{ marginTop: 30, fontSize: 20 }}>No Journal Entries</Text>
+  </View>
+);
 
 export default (props: Props) => {
   const renderItem = ({ item }: { item: JournalEntry }) => (
@@ -22,6 +28,7 @@ export default (props: Props) => {
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
       ItemSeparatorComponent={Separator}
+      ListEmptyComponent={Empty}
     />
   );
 };
