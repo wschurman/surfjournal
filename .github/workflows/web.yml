@@ -1,0 +1,25 @@
+name: Expo Web to GH Pages
+on:
+  push:
+    branches:
+      - master
+jobs:
+  publish:
+    name: Install and publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 4.x
+          expo-token: ${{ secrets.EXPO_TOKEN }}
+      - run: yarn install
+      - run: expo build:web
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web-build
