@@ -43,5 +43,6 @@ const styles = StyleSheet.create({
     width: STAR_SIZE,
     height: STAR_SIZE,
     marginEnd: STARGIN,
+    padding: 0,
   },
 });
