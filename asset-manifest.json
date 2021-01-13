@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/surfjournal/static/js/app.3e5d645d.chunk.js",
-    "app.js.map": "/surfjournal/static/js/app.3e5d645d.chunk.js.map",
+    "app.js": "/surfjournal/static/js/app.2ea82c16.chunk.js",
+    "app.js.map": "/surfjournal/static/js/app.2ea82c16.chunk.js.map",
     "runtime~app.js": "/surfjournal/static/js/runtime~app.f29d8046.js",
     "runtime~app.js.map": "/surfjournal/static/js/runtime~app.f29d8046.js.map",
-    "static/js/2.c29426ba.chunk.js": "/surfjournal/static/js/2.c29426ba.chunk.js",
-    "static/js/2.c29426ba.chunk.js.map": "/surfjournal/static/js/2.c29426ba.chunk.js.map",
+    "static/js/2.7e79656f.chunk.js": "/surfjournal/static/js/2.7e79656f.chunk.js",
+    "static/js/2.7e79656f.chunk.js.map": "/surfjournal/static/js/2.7e79656f.chunk.js.map",
     "fonts/AntDesign.ttf": "/surfjournal/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/surfjournal/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/surfjournal/./fonts/Feather.ttf",
@@ -24,11 +24,11 @@
     "index.html": "/surfjournal/index.html",
     "manifest.json": "/surfjournal/manifest.json",
     "serve.json": "/surfjournal/serve.json",
-    "static/js/2.c29426ba.chunk.js.LICENSE.txt": "/surfjournal/static/js/2.c29426ba.chunk.js.LICENSE.txt"
+    "static/js/2.7e79656f.chunk.js.LICENSE.txt": "/surfjournal/static/js/2.7e79656f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime~app.f29d8046.js",
-    "static/js/2.c29426ba.chunk.js",
-    "static/js/app.3e5d645d.chunk.js"
+    "static/js/2.7e79656f.chunk.js",
+    "static/js/app.2ea82c16.chunk.js"
   ]
 }
