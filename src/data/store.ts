@@ -12,16 +12,24 @@ import {
 } from 'redux-persist';
 
 import { journalEntriesSlice } from './journalEntriesReducer';
+import { spotFavoritesSlice } from './spotFavoritesReducer';
 
-const persistConfig = {
-  key: 'root',
+const journalEntriesPersistConfig = {
+  key: 'journal_entries',
+  version: 1,
+  storage: AsyncStorage,
+};
+
+const spotFavoritesPersistConfig = {
+  key: 'spot_favorites',
   version: 1,
   storage: AsyncStorage,
 };
 
 export const store = configureStore({
   reducer: {
-    journalEntries: persistReducer(persistConfig, journalEntriesSlice.reducer),
+    journalEntries: persistReducer(journalEntriesPersistConfig, journalEntriesSlice.reducer),
+    spotFavorites: persistReducer(spotFavoritesPersistConfig, spotFavoritesSlice.reducer),
   },
   middleware: getDefaultMiddleware({
     serializableCheck: {

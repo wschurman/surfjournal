@@ -1,22 +1,22 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
-import MainStack from './MainStack';
-import NewJournalEntry from './NewJournalEntry';
+import MainTabs from './MainTabs';
+import NewJournalEntryScreen from './NewJournalEntryScreen';
 
 export type RootStackParamList = {
-  Main: undefined;
-  NewJournalEntryModal: undefined;
+  MainTabs: undefined;
+  NewJournalEntryScreen: undefined;
 };
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
 export default () => (
   <RootStack.Navigator mode="modal">
-    <RootStack.Screen name="Main" component={MainStack} options={{ headerShown: false }} />
+    <RootStack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
     <RootStack.Screen
-      name="NewJournalEntryModal"
-      component={NewJournalEntry}
+      name="NewJournalEntryScreen"
+      component={NewJournalEntryScreen}
       options={{ title: 'Add Journal Entry' }}
     />
   </RootStack.Navigator>

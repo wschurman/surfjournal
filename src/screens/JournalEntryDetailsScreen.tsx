@@ -5,19 +5,21 @@ import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect, useDispatch } from 'react-redux';
 
+import StarRater from '../components/StarRater';
 import {
   journalEntriesSelectors,
   journalEntriesSlice,
   JournalEntry,
 } from '../data/journalEntriesReducer';
 import { RootState } from '../data/store';
-import { MainStackParamList } from './MainStack';
+import { formatForecast } from '../utils/formatting';
+import { HomeStackParamList } from './JournalEntriesStack';
 import { RootStackParamList } from './RootStack';
 
 type DetailsScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<MainStackParamList, 'Details'>,
+  StackNavigationProp<HomeStackParamList, 'JournalEntryDetailsScreen'>,
   CompositeNavigationProp<
-    StackNavigationProp<MainStackParamList>,
+    StackNavigationProp<HomeStackParamList>,
     StackNavigationProp<RootStackParamList>
   >
 >;
@@ -30,6 +32,12 @@ const Details = ({
   journalEntry: JournalEntry | undefined;
 }) => {
   const dispatch = useDispatch();
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      title: journalEntry ? journalEntry.spot.name : 'Not Found',
+    });
+  }, [navigation]);
 
   if (!journalEntry) {
     return (
@@ -46,9 +54,10 @@ const Details = ({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{journalEntry.title}</Text>
       <Text style={styles.date}>{new Date(journalEntry.createdAt).toLocaleString()}</Text>
       <Text style={styles.body}>{journalEntry.body}</Text>
+      <Text style={styles.body}>{formatForecast(journalEntry.forecast)}</Text>
+      <StarRater value={journalEntry.rating} onChange={() => {}} />
       <View style={styles.deleteButton}>
         {/* @ts-expect-error */}
         <Ionicons.Button name="trash-bin" backgroundColor="red" onPress={onPressDelete}>
@@ -64,9 +73,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 20,
   },
   date: {
     fontSize: 14,

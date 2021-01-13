@@ -13,7 +13,7 @@ export default (props: Props) => {
     <Pressable
       onPress={() => props.onPress(props.journalEntry)}
       style={({ pressed }) => [{ backgroundColor: pressed ? '#eee' : '#fff' }, styles.item]}>
-      <Text style={styles.title}>{props.journalEntry.title}</Text>
+      <Text style={styles.title}>{props.journalEntry.spot.name}</Text>
       <Text style={styles.date}>{new Date(props.journalEntry.createdAt).toLocaleString()}</Text>
     </Pressable>
   );

@@ -2,20 +2,18 @@ import { Ionicons } from '@expo/vector-icons';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useLayoutEffect } from 'react';
-import { Pressable } from 'react-native';
-import { TouchableNativeFeedback, TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 
 import JournalEntryList from '../components/JournalEntryList';
 import { journalEntriesSelectors, JournalEntry } from '../data/journalEntriesReducer';
 import { RootState } from '../data/store';
-import { MainStackParamList } from './MainStack';
+import { HomeStackParamList } from './JournalEntriesStack';
 import { RootStackParamList } from './RootStack';
 
 type HomeScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<MainStackParamList, 'Home'>,
+  StackNavigationProp<HomeStackParamList, 'JournalEntryListScreen'>,
   CompositeNavigationProp<
-    StackNavigationProp<MainStackParamList>,
+    StackNavigationProp<HomeStackParamList>,
     StackNavigationProp<RootStackParamList>
   >
 >;
@@ -28,17 +26,20 @@ const Home = ({
   journalEntries: JournalEntry[];
 }) => {
   const onPressJournalEntry = (journalEntry: JournalEntry) => {
-    navigation.push('Details', { id: journalEntry.id });
+    navigation.push('JournalEntryDetailsScreen', { id: journalEntry.id });
   };
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity
-          onPress={() => navigation.navigate('NewJournalEntryModal')}
-          style={{ marginRight: 10 }}>
-          <Ionicons name="add" color="blue" size={30} />
-        </TouchableOpacity>
+        <Ionicons.Button
+          onPress={() => navigation.navigate('NewJournalEntryScreen')}
+          // @ts-expect-error
+          backgroundColor="white"
+          name="add"
+          color="blue"
+          size={30}
+        />
       ),
     });
   }, [navigation]);

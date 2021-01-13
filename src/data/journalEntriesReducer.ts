@@ -1,12 +1,15 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
+import { Forecast, Spot } from '../utils/Surfline';
 import { RootState } from './store';
 
 export interface JournalEntry {
   id: string;
   createdAt: string;
-  title: string;
   body: string;
+  spot: Spot;
+  forecast: Forecast;
+  rating: number;
 }
 
 export const journalEntriesAdapter = createEntityAdapter<JournalEntry>({
